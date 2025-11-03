@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import 'tailwindcss';
 
 @theme {
+  --default-font-family: 'Inter', sans-serif;
   --color-primary: #820933;
+
+  --animate-flow: flow 20s infinite linear;
+  @keyframes flow {
+    from {translate: 0;}
+    to {translate: -100%}
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* firefox */
+    scrollbar-width: none;
+  }
 }

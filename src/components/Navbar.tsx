@@ -4,7 +4,7 @@ import Categories from '../assets/Categories'
 
 export default function Navbar() {
   return (
-    <div className='absolute bottom-0 border-t w-full pb-2 pt-1 flex justify-around'>
+    <div className='fixed bottom-0 border-t border-neutral-600 w-full py-2 flex justify-around bg-white z-10'>
       <NavLink
        to='/' 
        className='flex flex-col items-center'>

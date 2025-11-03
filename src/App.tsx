@@ -9,6 +9,7 @@ import Home from "./pages/Home"
 import Categories from "./pages/Categories"
 import Cart from "./pages/Cart"
 import Account from "./pages/Account"
+import Details, { detailsLoader } from "./hooks/Details"
 
 export default function App() {
   const router = createBrowserRouter(
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="categories" element={<Categories />}/>
         <Route path="cart" element={<Cart />}/>
         <Route path="profile" element={<Account />}/>
+        <Route path="details/:id" element={<Details />} loader={detailsLoader} />
       </Route>
     )
   )
@@ -26,7 +28,3 @@ export default function App() {
     <RouterProvider router={router} />
   )
 }
-
-// fetch('https://fakestoreapi.com/products/1')
-//             .then(res=>res.json())            
-//             .then(json=>console.log(json))
