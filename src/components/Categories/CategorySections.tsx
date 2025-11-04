@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-type Product = {
-  id: number;
-  title: string;
-  images: string[];
+export type Product = {
+  id: number
+  title: string
+  images: string[]
+  thumbnail: string
 };
 
 const categories = [

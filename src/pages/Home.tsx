@@ -6,7 +6,7 @@ import FlashSales from "../components/Home/FlashSales";
 
 export default function Home() {
   return (
-    <div className="p-1 h-[50vh] scroll-auto">
+    <div className="p-1 flex flex-col h-screen overflow-y-scroll">
       <SearchBar />
       <img src={banner} alt="black friday sales" className="mt-5" />
       <TopItems />
