@@ -7,6 +7,7 @@ export type Product = {
   title: string
   images: string[]
   thumbnail: string
+  category: string
 };
 
 const categories = [

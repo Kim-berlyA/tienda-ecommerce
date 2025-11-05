@@ -23,7 +23,6 @@ export default function TopItems() {
 
       const results = await Promise.all(promises);
       setProducts(results);
-      console.log(results)
     }
 
     fetchRandomProducts()

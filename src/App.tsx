@@ -9,9 +9,11 @@ import Home from "./pages/Home"
 import Categories from "./pages/Categories"
 import Cart from "./pages/Cart"
 import Account from "./pages/Account"
-import Details, { detailsLoader } from "./hooks/Details"
+import Details, { detailsLoader } from "./components/Details"
+import { CartProvider } from "./hooks/cart"
 
 export default function App() {
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path ='/' element={<RootLayout />}>
@@ -25,6 +27,8 @@ export default function App() {
   )
 
   return (
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   )
 }
