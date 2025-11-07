@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import type { Product } from "../Categories/CategorySections";
 import { Link } from "react-router-dom";
+import { useCategory } from "../../hooks/SelectedCategory";
 
 export default function TopCategories() {
   const [products, setProducts] = useState<Product[]>([]);
+  const { setSelectedCategory } = useCategory();
 
   useEffect(() => {
     async function fetchRandomProducts() {
@@ -31,7 +33,8 @@ export default function TopCategories() {
         {products.map((product) => (
           <Link
            key={product.id} 
-           to={`/details/${product.id}`}
+           to={`/categories`}
+           onClick={() => setSelectedCategory(product.category)}
            className="flex flex-col items-center">
             <img src={product.thumbnail} className="size-32 mb-0.5 bg-neutral-200 rounded-md" /> 
             <span>{product.category}</span>

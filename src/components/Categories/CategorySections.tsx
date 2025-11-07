@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useCategory } from "../../hooks/SelectedCategory";
 
 export type Product = {
   id: number
@@ -11,31 +12,35 @@ export type Product = {
 };
 
 const categories = [
-  "smartphones",
-  "laptops",
+  "beauty",
   "fragrances",
-  "skincare",
+  "furniture",
   "groceries",
   "home-decoration",
-  "furniture",
-  "tops",
-  "womens-dresses",
-  "womens-shoes",
+  "kitchen-accessories",
+  "laptops",
   "mens-shirts",
   "mens-shoes",
   "mens-watches",
-  "womens-watches",
-  "womens-bags",
-  "womens-jewellery",
-  "sunglasses",
-  "automotive",
+  "mobile-accessories",
   "motorcycle",
-  "lighting",
+  "skin-care",
+  "smartphones",
+  "sports-accessories",
+  "sunglasses",
+  "tablets",
+  "tops",
+  "vehicle",
+  "womens-bags",
+  "womens-dresses",
+  "womens-jewellery",
+  "womens-shoes",
+  "womens-watches"
 ];
 
 export default function CategorySections() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState('smartphones');
+  const { selectedCategory, setSelectedCategory } = useCategory();
 
   async function fetchProducts(item:string) {
     fetch(`https://dummyjson.com/products/category/${item}`)
@@ -51,8 +56,8 @@ export default function CategorySections() {
   }, []);
 
   return (
-    <div className="grid grid-cols-4 w-full bg-neutral-100 mt-5">
-      <div className="col-span-1 w-full mb-20 sticky h-fit self-start top-0">
+    <div className="grid grid-cols-4 w-full bg-white pt-3 h-[90vh] overflow-hidden">
+      <div className="col-span-1 w-full overflow-y-auto mb-15">
         {categories.map((item, i) => (
           <div 
           key={i}
@@ -70,17 +75,17 @@ export default function CategorySections() {
           </div>
         ))}
       </div>
-      <div className="col-span-3 mt-3">
+      <div className="col-span-3 mt-3 overflow-y-auto mb-15">
         <div className="grid grid-cols-3 ">
           {products.map((product) => (
             <Link key={product.id} to={`/details/${product.id}`}>
               <div 
-              className="flex flex-col items-center rounded-sm shadow-sm ml-2 mb-2">
+              className="flex flex-col justify-around items-center rounded-sm shadow-sm ml-2 h-36">
                 <img src={product.images[0]} 
                 className="size-20"
                 alt="product image" />
 
-                <p className="text-center text-xs">{product.title}</p>
+                <p className="text-center text-xs mb-2">{product.title}</p>
               </div>
             </Link>
           ))}
@@ -89,13 +94,3 @@ export default function CategorySections() {
     </div>
   )
 }
-
-
-// {products.map((product) => (
-//   <Link key={product.id} to={`/details/${product.id}`}>
-//     <div className="border p-3 rounded hover:shadow cursor-pointer">
-//       <img src={product.thumbnail} alt={product.title} className="w-48 h-48 object-cover" />
-//       <h3>{product.title}</h3>
-//     </div>
-//   </Link>
-// ))}

@@ -11,6 +11,7 @@ import Cart from "./pages/Cart"
 import Account from "./pages/Account"
 import Details, { detailsLoader } from "./components/Details"
 import { CartProvider } from "./hooks/cart"
+import { CategoryProvider } from "./hooks/SelectedCategory"
 
 export default function App() {
 
@@ -28,7 +29,9 @@ export default function App() {
 
   return (
     <CartProvider>
-      <RouterProvider router={router} />
+      <CategoryProvider>
+        <RouterProvider router={router} />
+      </CategoryProvider>
     </CartProvider>
   )
 }
