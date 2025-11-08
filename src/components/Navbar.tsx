@@ -7,7 +7,7 @@ export default function Navbar() {
   const {cart} = useCart();
 
   return (
-    <div className='fixed bottom-0 border-t border-neutral-600 w-full py-2 flex justify-around bg-white z-10'>
+    <div className='fixed bottom-0 border-t border-neutral-600 w-full py-2  flex justify-around bg-white z-10'>
       <NavLink
        to='/' 
        className='flex flex-col items-center'>
@@ -16,9 +16,10 @@ export default function Navbar() {
             <House
               stroke={isActive ? '#820933' :'black'}
               fill={isActive ? '#820933' : 'none'}
+              className='size-5'
             />
             <span
-              className={`mt-1 text-sm ${
+              className={`mt-1 text-sm md:text-xs ${
                 isActive ? 'text-primary' : 'text-black'
               }`}
             >
@@ -36,9 +37,10 @@ export default function Navbar() {
             <Categories
               stroke={isActive ? '#820933' :'black'}
               fill={isActive ? '#820933' : 'none'}
+              className='size-5'
             />
             <span
-              className={`mt-1 text-sm ${
+              className={`mt-1 text-sm md:text-xs ${
                 isActive ? 'text-primary' : 'text-black'
               }`}
             >
@@ -57,14 +59,15 @@ export default function Navbar() {
               <ShoppingCart
                 stroke={isActive ? '#820933' :'black'}
                 fill={isActive ? '#820933' : 'none'}
+              className='size-5'
               />
-              {(cart.length > 0) && <div className={`absolute p-1 text-white rounded-full -top-2 -right-2 bg-primary border border-white ${
+              {(cart.length > 0) && <div className={`absolute p-1 md:p-0.5 text-white rounded-full -top-2 -right-2 bg-primary border border-white ${
                 isActive ? 'hidden' : ''} `}>
-                  <div className='size-3 text-xs flex justify-center items-center'>{cart.length}</div>
+                  <div className='size-3 text-xs md:text-[0.6rem] flex justify-center items-center'>{cart.length}</div>
               </div>}
             </div>
             <span
-              className={`mt-1 text-sm ${
+              className={`mt-1 text-sm md:text-xs ${
                 isActive ? 'text-primary' : 'text-black'
               }`}
             >
@@ -82,9 +85,10 @@ export default function Navbar() {
             <User
               stroke={isActive ? '#820933' :'black'}
               fill={isActive ? '#820933' : 'none'}
+              className='size-5'
             />
             <span
-              className={`mt-1 text-sm ${
+              className={`mt-1 text-sm md:text-xs ${
                 isActive ? 'text-primary' : 'text-black'
               }`}
             >

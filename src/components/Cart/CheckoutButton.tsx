@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../hooks/useCart"
+import { useCart } from "../../hooks/useCart";
 
 export default function CheckoutButton() {
   const { cart, totalPrice } = useCart();

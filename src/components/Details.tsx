@@ -61,17 +61,17 @@ export default function Details() {
         <p className="text-neutral-800 text-sm">{product.warrantyInformation}</p>
       </div>
 
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center mt-[1vh]">
         {isEmpty ? (
           <button
-            className="bg-primary rounded-full text-white py-3 px-20 mt-20 duration-200 active:translate-y-0.5"
+            className="bg-primary rounded-full text-white py-3 px-20 duration-200 active:translate-y-0.5"
             onClick={() => addToCart(product.id, product.title, product.price, product.stock, product.thumbnail, product.description)}
           >
             Add to Cart
           </button>
         ) : (
           <div
-            className="rounded-full text-white w-60 h-12 mt-20 flex"
+            className="rounded-full text-white w-60 h-12 flex"
           >
             <div
              className="bg-primary flex justify-center items-center p-5 h-full rounded-sm text-3xl"

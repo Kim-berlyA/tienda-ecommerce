@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { useCategory } from "../../hooks/useSelectedCategory";
+import { categories } from "../../data/data";
 
 export type Product = {
   id: number
@@ -12,57 +12,31 @@ export type Product = {
   price: number
 };
 
-const categories = [
-  "beauty",
-  "fragrances",
-  "furniture",
-  "groceries",
-  "home-decoration",
-  "kitchen-accessories",
-  "laptops",
-  "mens-shirts",
-  "mens-shoes",
-  "mens-watches",
-  "mobile-accessories",
-  "motorcycle",
-  "skin-care",
-  "smartphones",
-  "sports-accessories",
-  "sunglasses",
-  "tablets",
-  "tops",
-  "vehicle",
-  "womens-bags",
-  "womens-dresses",
-  "womens-jewellery",
-  "womens-shoes",
-  "womens-watches"
-];
-
 export default function CategorySections() {
   const [products, setProducts] = useState<Product[]>([]);
   const { selectedCategory, setSelectedCategory } = useCategory();
 
   async function fetchProducts(item:string) {
-    fetch(`https://dummyjson.com/products/category/${item}`)
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data.products);
-      }); 
+    try {
+      const res = await fetch(`https://dummyjson.com/products/category/${item}`);
+      const data = await res.json();
+      setProducts(data.products);
+    } catch (error) {
+      console.error('Failed to fetch products', error);
+    }
   }
 
   useEffect(() => {
     fetchProducts(selectedCategory);
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <div className="grid grid-cols-4 w-full bg-white pt-3 h-[90vh] overflow-hidden">
       <div className="col-span-1 w-full overflow-y-auto mb-15 pr-1">
         {categories.map((item, i) => (
-          <div 
+          <button 
           key={i}
           onClick={() => {
-            fetchProducts(item)
             setSelectedCategory(item);
             }
           }
@@ -72,13 +46,15 @@ export default function CategorySections() {
              : ""
           }`}>
             {item}
-          </div>
+          </button>
         ))}
       </div>
       <div className="col-span-3 mt-3 overflow-y-auto mb-15">
         <div className="grid grid-cols-3 ">
           {products.map((product) => (
-            <Link key={product.id} to={`/details/${product.id}`}>
+            <Link
+             key={product.id} 
+             to={`/details/${product.id}`}>
               <div 
               className="flex flex-col justify-around items-center rounded-sm shadow-sm ml-2 h-36">
                 <img src={product.images[0]} 

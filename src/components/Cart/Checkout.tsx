@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../hooks/useCart"
+import { useCart } from "../../hooks/useCart"
 import { ArrowLeft } from "lucide-react";
 import { CreditCard } from "lucide-react";
 import { Truck } from "lucide-react";

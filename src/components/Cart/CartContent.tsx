@@ -1,4 +1,4 @@
-import { useCart } from "../hooks/useCart"
+import { useCart } from "../../hooks/useCart"
 import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -22,13 +22,13 @@ export default function CartContent() {
         <span>₦ {totalPrice.toLocaleString("en-NG", { minimumFractionDigits: 2 })}</span>
       </div>
 
-      <div className="bg-neutral-200 pt-1 mb-9">
+      <div className="bg-neutral-200 py-1 mb-9">
         {cart.map(item => (
           <Link
            key={item.productId}
            to={`/details/${item.productId}`}
-           className="bg-white mb-2 rounded-md flex items-center">
-            <img src={item.thumbnail} alt={item.title} className="size-1/4" />
+           className="bg-white mb-1 mx-1 rounded-md flex items-center md:gap-3">
+            <img src={item.thumbnail} alt={item.title} className="size-1/4 md:size-1/6" />
 
             <div className="py-2 w-full">
               <p>{item.title}</p>
@@ -39,8 +39,11 @@ export default function CartContent() {
                 ₦{(Math.round((item.price * 0.12 + item.price * 100) * 100) / 100).toLocaleString("en-NG", { minimumFractionDigits: 2 })}
               </span>
               <span className="bg-primary/40 text-primary ml-2 p-1 rounded-sm">-12%</span>
-              <p className="my-1 text-neutral-500">{item.stock} units left</p>
-              <div className="w-full flex justify-end">
+
+              <div className="flex justify-between items-center">
+                <p className="my-1 text-neutral-500 shrink-0">{item.stock} units left</p>
+                <div className="w-full flex justify-end">
+                </div>
                 <div
                   className="rounded-full w-fit text-white flex mr-5"
                   onClick={(e) => {

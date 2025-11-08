@@ -24,7 +24,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="sticky top-0 w-full bg-white py-3 z-10">
+    <div className="sticky -top-1 w-full bg-white py-3 z-10">
       <form onSubmit={handleSearch} className="relative">
         <input
           type="text"

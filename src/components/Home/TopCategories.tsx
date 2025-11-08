@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import type { Product } from "../Categories/CategorySections";
 import { Link } from "react-router-dom";
 import { useCategory } from "../../hooks/useSelectedCategory";
@@ -7,11 +7,13 @@ export default function TopCategories() {
   const [products, setProducts] = useState<Product[]>([]);
   const { setSelectedCategory } = useCategory();
 
+  const ids:number[] = useMemo(
+    () => [121, 78, 16, 172, 10, 162],
+    []
+  );
+
   useEffect(() => {
     async function fetchProducts() {
-      const ids:number[] = [121, 78, 16, 172, 10, 162];
-      
-
       const promises = ids.map(id => 
         fetch(`https://dummyjson.com/products/${id}`)
          .then(res => res.json())
@@ -22,8 +24,15 @@ export default function TopCategories() {
       setProducts(results);
     }
 
-    fetchProducts()
+    fetchProducts();
   }, []);
+
+  const handleClick = useCallback(
+    (category: string) => {
+      setSelectedCategory(category);
+    },
+    [setSelectedCategory]
+  );
 
 
   return (
@@ -34,7 +43,7 @@ export default function TopCategories() {
           <Link
            key={product.id} 
            to={`/categories`}
-           onClick={() => setSelectedCategory(product.category)}
+           onClick={() => handleClick(product.category)}
            className="flex flex-col items-center">
             <img src={product.thumbnail} className="size-32 mb-0.5 bg-neutral-200 rounded-md" /> 
             <span>{product.category}</span>

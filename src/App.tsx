@@ -12,7 +12,7 @@ import Account from "./pages/Account"
 import Details, { detailsLoader } from "./components/Details"
 import { CartProvider } from "./hooks/useCart"
 import { CategoryProvider } from "./hooks/useSelectedCategory"
-import Checkout from "./components/Checkout"
+import Checkout from "./components/Cart/Checkout"
 
 export default function App() {
 
