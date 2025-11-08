@@ -1,4 +1,3 @@
-import { useContext } from "react"
 import CartContent from "../components/Cart/CartContent"
 import CheckoutButton from "../components/Cart/CheckoutButton"
 
