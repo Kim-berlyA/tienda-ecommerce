@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 import type { Product } from "../Categories/CategorySections";
 import { Link } from "react-router-dom";
-import { useCategory } from "../../hooks/SelectedCategory";
+import { useCategory } from "../../hooks/useSelectedCategory";
 
 export default function TopCategories() {
   const [products, setProducts] = useState<Product[]>([]);
   const { setSelectedCategory } = useCategory();
 
   useEffect(() => {
-    async function fetchRandomProducts() {
+    async function fetchProducts() {
       const ids:number[] = [121, 78, 16, 172, 10, 162];
       
 
@@ -22,7 +22,7 @@ export default function TopCategories() {
       setProducts(results);
     }
 
-    fetchRandomProducts()
+    fetchProducts()
   }, []);
 
 

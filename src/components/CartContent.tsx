@@ -1,5 +1,5 @@
-import { useCart } from "../hooks/cart"
-import backArrow from '../assets/back.png';
+import { useCart } from "../hooks/useCart"
+import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function CartContent() {
@@ -12,7 +12,7 @@ export default function CartContent() {
         <button
           onClick={() => navigate(-1)}
         >
-          <img src={backArrow} alt="previous page" className="size-7 ml-5" />
+          <ArrowLeft className="ml-2" />
         </button>
         <h2 className="text-2xl">Cart</h2>
       </div>
@@ -22,7 +22,7 @@ export default function CartContent() {
         <span>₦ {totalPrice.toLocaleString("en-NG", { minimumFractionDigits: 2 })}</span>
       </div>
 
-      <div className="bg-neutral-200 pt-1">
+      <div className="bg-neutral-200 pt-1 mb-9">
         {cart.map(item => (
           <Link
            key={item.productId}

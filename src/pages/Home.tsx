@@ -10,6 +10,8 @@ export default function Home() {
       <SearchBar />
       <img src={banner} alt="black friday sales" className="mt-5" />
       <TopItems />
+      <FlashSales />
+      <div className="h-2 w-full bg-neutral-100 mt-5">&nbsp;</div>
       <TopCategories />
     </div>
   )

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { House, User, ShoppingCart } from 'lucide-react'
 import Categories from '../assets/Categories'
-import { useCart } from '../hooks/cart'
+import { useCart } from '../hooks/useCart';
 
 export default function Navbar() {
   const {cart} = useCart();

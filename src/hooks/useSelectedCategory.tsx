@@ -7,7 +7,7 @@ const CategoryContext = createContext<{
 } | null>(null);
 
 export function CategoryProvider({ children }: { children: React.ReactNode }) {
-  const [selectedCategory, setSelectedCategory] = useState("smartphones");
+  const [selectedCategory, setSelectedCategory] = useState("groceries");
   return (
     <CategoryContext.Provider value={{ selectedCategory, setSelectedCategory }}>
       {children}

@@ -10,8 +10,9 @@ import Categories from "./pages/Categories"
 import Cart from "./pages/Cart"
 import Account from "./pages/Account"
 import Details, { detailsLoader } from "./components/Details"
-import { CartProvider } from "./hooks/cart"
-import { CategoryProvider } from "./hooks/SelectedCategory"
+import { CartProvider } from "./hooks/useCart"
+import { CategoryProvider } from "./hooks/useSelectedCategory"
+import Checkout from "./components/Checkout"
 
 export default function App() {
 
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="cart" element={<Cart />}/>
         <Route path="profile" element={<Account />}/>
         <Route path="details/:id" element={<Details />} loader={detailsLoader} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     )
   )

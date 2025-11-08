@@ -1,8 +1,8 @@
 import type { LoaderFunctionArgs } from "react-router-dom";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import backArrow from '../assets/back.png';
-import { useCart } from "../hooks/cart";
+import { ArrowLeft } from "lucide-react";
+import { useCart } from "../hooks/useCart";
 
 export default function Details() {
   const product = useLoaderData() as any;
@@ -20,8 +20,6 @@ export default function Details() {
       setIsEmpty(true);
       setQuantity(0);
     }
-
-    console.log(cart)
   }, [cart]);
 
   return (
@@ -31,7 +29,7 @@ export default function Details() {
           onClick={() => navigate(-1)}
           className="absolute top-3 left-3 bg-neutral-200 rounded-full p-3"
         >
-          <img src={backArrow} alt="previous page" className="size-5" />
+          <ArrowLeft />
         </button>
         <img
           src={product.images[0]}

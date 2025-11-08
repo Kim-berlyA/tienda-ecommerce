@@ -20,13 +20,20 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const saved = localStorage.getItem('cart');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
     const total = cart.reduce((sum, item) => sum + (item.price * 100) * item.quantity, 0);
     setTotalPrice(total);
-    console.log(total)
   }, [cart]);
 
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useCategory } from "../../hooks/SelectedCategory";
+import { useCategory } from "../../hooks/useSelectedCategory";
 
 export type Product = {
   id: number
@@ -9,6 +9,7 @@ export type Product = {
   images: string[]
   thumbnail: string
   category: string
+  price: number
 };
 
 const categories = [
@@ -46,7 +47,6 @@ export default function CategorySections() {
     fetch(`https://dummyjson.com/products/category/${item}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data.products);
         setProducts(data.products);
       }); 
   }
@@ -57,7 +57,7 @@ export default function CategorySections() {
 
   return (
     <div className="grid grid-cols-4 w-full bg-white pt-3 h-[90vh] overflow-hidden">
-      <div className="col-span-1 w-full overflow-y-auto mb-15">
+      <div className="col-span-1 w-full overflow-y-auto mb-15 pr-1">
         {categories.map((item, i) => (
           <div 
           key={i}
@@ -66,7 +66,7 @@ export default function CategorySections() {
             setSelectedCategory(item);
             }
           }
-          className={`py-3 text-sm rounded-md px-2 duration-300 ${
+          className={`py-3 text-sm rounded-md px-2 duration-300 cursor-pointer ${
             selectedCategory === item
              ? "shadow-sm bg-primary text-white"
              : ""
