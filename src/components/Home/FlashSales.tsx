@@ -47,7 +47,7 @@ export default function FlashSales() {
                alt={product.title}
                className="h-32" />
 
-                <div className="absolute top-0 right-0 p-0.5 rounded-sm bg-[#e7acc1] text-primary">
+                <div className="absolute top-0 right-0 p-0.5 rounded-sm bg-[#f7d6e1] text-primary">
                   -12%
                 </div>
             </div>
