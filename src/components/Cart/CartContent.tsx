@@ -38,7 +38,7 @@ export default function CartContent() {
               <span className="text-neutral-700 line-through text-sm">
                 ₦{(Math.round((item.price * 0.12 + item.price * 100) * 100) / 100).toLocaleString("en-NG", { minimumFractionDigits: 2 })}
               </span>
-              <span className="bg-primary/30 text-primary ml-2 p-1 rounded-sm text-xs">-12%</span>
+              <span className="bg-[#e7acc1] text-primary ml-2 p-1 rounded-sm text-xs">-12%</span>
 
               <div className="flex justify-between items-center">
                 <p className="my-1 text-neutral-500 shrink-0">{item.stock} units left</p>
