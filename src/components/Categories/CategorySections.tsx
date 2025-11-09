@@ -31,8 +31,8 @@ export default function CategorySections() {
   }, [selectedCategory]);
 
   return (
-    <div className="grid grid-cols-4 w-full bg-white pt-3 h-[90vh] overflow-hidden">
-      <div className="col-span-1 w-full overflow-y-auto mb-15 pr-1">
+    <div className="grid grid-cols-5 w-full bg-white pt-3 h-[85vh] overflow-hidden">
+      <div className="col-span-2 w-full overflow-y-auto mb-15 pr-1">
         {categories.map((item, i) => (
           <button 
           key={i}
@@ -50,7 +50,7 @@ export default function CategorySections() {
         ))}
       </div>
       <div className="col-span-3 mt-3 overflow-y-auto mb-15">
-        <div className="grid grid-cols-3 ">
+        <div className="grid grid-cols-2 ">
           {products.map((product) => (
             <Link
              key={product.id} 

@@ -23,7 +23,7 @@ export default function Details() {
   }, [cart]);
 
   return (
-    <div className="p-1">
+    <div className="p-1 h-[90vh] overflow-y-auto">
       <div className="bg-neutral-100 relative flex justify-center">
         <button
           onClick={() => navigate(-1)}
@@ -64,14 +64,14 @@ export default function Details() {
       <div className="w-full flex justify-center mt-[1vh]">
         {isEmpty ? (
           <button
-            className="bg-primary rounded-full text-white py-3 px-20 duration-200 active:translate-y-0.5"
+            className="bg-primary rounded-full text-white py-3 px-20 duration-200 active:translate-y-0.5 mb-5"
             onClick={() => addToCart(product.id, product.title, product.price, product.stock, product.thumbnail, product.description)}
           >
             Add to Cart
           </button>
         ) : (
           <div
-            className="rounded-full text-white w-60 h-12 flex"
+            className="rounded-full text-white w-60 h-12 flex mb-5"
           >
             <div
              className="bg-primary flex justify-center items-center p-5 h-full rounded-sm text-3xl"
