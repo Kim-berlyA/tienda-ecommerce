@@ -31,7 +31,7 @@ export default function CategorySections() {
   }, [selectedCategory]);
 
   return (
-    <div className="grid grid-cols-5 w-full bg-white pt-3 h-[85vh] overflow-hidden">
+    <div className="grid grid-cols-6 w-full bg-white pt-3 h-[90vh] md:h-[85vh] overflow-hidden">
       <div className="col-span-2 w-full overflow-y-auto mb-15 pr-1">
         {categories.map((item, i) => (
           <button 
@@ -49,7 +49,7 @@ export default function CategorySections() {
           </button>
         ))}
       </div>
-      <div className="col-span-3 mt-3 overflow-y-auto mb-15">
+      <div className="col-span-4 mt-3 overflow-y-auto mb-15">
         <div className="grid grid-cols-2 ">
           {products.map((product) => (
             <Link
