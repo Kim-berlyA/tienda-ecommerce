@@ -61,9 +61,9 @@ export default function Navbar() {
                 fill={isActive ? '#820933' : 'none'}
               className='size-5'
               />
-              {(cart.length > 0) && <div className={`absolute p-1 md:p-0.5 text-white rounded-full -top-2 -right-2 bg-primary border border-white ${
+              {(cart.length > 0) && <div className={`absolute p-1 text-white rounded-full -top-2 -right-2 bg-primary border border-white ${
                 isActive ? 'hidden' : ''} `}>
-                  <div className='size-3 text-xs md:text-[0.6rem] flex justify-center items-center'>{cart.length}</div>
+                  <div className='size-2 text-[0.6rem] flex justify-center items-center'>{cart.length}</div>
               </div>}
             </div>
             <span

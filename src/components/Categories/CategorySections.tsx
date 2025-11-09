@@ -40,7 +40,7 @@ export default function CategorySections() {
             setSelectedCategory(item);
             }
           }
-          className={`py-3 text-sm rounded-md px-2 duration-300 cursor-pointer text-left ${
+          className={`py-3 text-sm rounded-md px-2 duration-300 cursor-pointer text-left w-full ${
             selectedCategory === item
              ? "shadow-sm bg-primary text-white"
              : ""
