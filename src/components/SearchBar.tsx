@@ -1,15 +1,30 @@
-import { Search } from "lucide-react";
-import { useState } from "react";
+import { Search, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
-  async function handleSearch(e: React.FormEvent) {
-    e.preventDefault();
-    if (!query.trim()) return;
+  useEffect(() => {
+    if (!query.trim()) {
+      setResults([]);
+      setHasSearched(true);
+      return;
+    }
+
+    const intervalId = setTimeout(() => {
+      handleSearch();
+    }, 300);
+
+    return () => clearTimeout(intervalId);
+  }, [query])
+
+  async function handleSearch() {
+    setResults([]);
+    setHasSearched(true);
     setLoading(true);
 
     try {
@@ -18,14 +33,20 @@ export default function SearchBar() {
       setResults(data.products || []);
     } catch (error) {
       console.error("Search failed:", error);
+      setResults([]);
     } finally {
       setLoading(false);
     }
   }
 
+  function handleClear() {
+    setResults([]);
+    setQuery("");
+  }
+
   return (
     <div className="sticky -top-1 w-full bg-white py-3 z-10">
-      <form onSubmit={handleSearch} className="relative">
+      <div className="relative">
         <input
           type="text"
           placeholder="Search Tienda"
@@ -33,15 +54,17 @@ export default function SearchBar() {
           onChange={(e) => setQuery(e.target.value)}
           className="p-3 rounded-full border bg-neutral-100 w-full focus:ring-primary focus:ring-2 focus:border-primary focus:outline-none duration-100"
         />
-        <Search
-         className="absolute right-3 top-3 text-gray-500"
-         onClick={handleSearch} />
-      </form>
+        <button type="submit">
+          <X
+           onClick={handleClear}
+           className="absolute right-3 top-3 text-gray-500" />
+        </button>
+      </div>
 
       {loading && <p className="mt-4 text-center text-gray-500">Searching...</p>}
 
-      {!loading && query && results.length > 0 && (
-        <div className="fixed top-18 bg-white w-full pt-3 overflow-y-auto inset-0 px-1">
+      {!loading && hasSearched && query && results.length > 0 && (
+        <div className="fixed top-20 bg-white w-full pt-3 overflow-y-auto inset-0 px-1">
           {results.map((product) => (
             <Link
             to={`/details/${product.id}`}
@@ -64,7 +87,7 @@ export default function SearchBar() {
         </div>
       )}
 
-      {!loading && query && results.length === 0 && (
+      {hasSearched && !loading && query && results.length === 0 && (
         <p className="mt-4 text-center text-gray-500">
           No products found for “{query}”
         </p>

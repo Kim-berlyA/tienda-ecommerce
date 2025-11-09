@@ -40,14 +40,14 @@ export default function FlashSales() {
           <Link 
            key={i}
            to={`details/${product.id}`}
-           className="shrink-0 size-44">
+           className="shrink-0 h-44 w-36 px-2">
             <div className="relative">
               <img 
                src={product.thumbnail} 
                alt={product.title}
                className="h-32" />
 
-                <div className="absolute top-0 -right-5 p-0.5 rounded-sm bg-primary/15 text-primary">
+                <div className="absolute top-0 right-0 p-0.5 rounded-sm bg-primary/15 text-primary">
                   -12%
                 </div>
             </div>

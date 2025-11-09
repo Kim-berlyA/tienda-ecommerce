@@ -9,10 +9,15 @@ import Home from "./pages/Home"
 import Categories from "./pages/Categories"
 import Cart from "./pages/Cart"
 import Account from "./pages/Account"
+import Checkout from "./components/Cart/Checkout"
 import Details, { detailsLoader } from "./components/Details"
+
+//hooks
 import { CartProvider } from "./hooks/useCart"
 import { CategoryProvider } from "./hooks/useSelectedCategory"
-import Checkout from "./components/Cart/Checkout"
+
+//analytics
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App() {
 
@@ -33,6 +38,7 @@ export default function App() {
     <CartProvider>
       <CategoryProvider>
         <RouterProvider router={router} />
+        <Analytics />
       </CategoryProvider>
     </CartProvider>
   )
