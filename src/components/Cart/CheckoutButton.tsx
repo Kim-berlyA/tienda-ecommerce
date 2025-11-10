@@ -9,7 +9,7 @@ export default function CheckoutButton() {
     <div className="sticky bottom-20 flex justify-center">
       <button
       onClick={() => navigate('/checkout')}
-       className={`bg-primary py-3 px-5 text-white text-lg rounded-full ${cart.length === 0 ? 'hidden' : ''}`}>
+       className={`bg-primary py-3 px-5 text-white rounded-full ${cart.length === 0 ? 'hidden' : ''}`}>
         Checkout ₦{totalPrice.toLocaleString("en-NG", { minimumFractionDigits: 2 })}
       </button>
     </div>

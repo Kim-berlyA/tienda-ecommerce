@@ -40,10 +40,10 @@ export default function Details() {
 
       <div className="p-3 mt-3">
         <h2 className="text-lg font-medium">{product.title}</h2>
-        <p className="text-xs mt-2 text-neutral-800">{product.description}</p>
-        <p className="text-sm my-3">
+        <p className="text-xs mt-2 text-neutral-800 mb-3">{product.description}</p>
+        {product.brand && <p className="text-sm mb-3">
           Brand: <span className="text-primary">{product.brand}</span>
-        </p>
+        </p>}
         <p className="flex items-center gap-2 font-medium">
           <span className="text-xl">₦{(product.price * 100).toLocaleString("en-NG", { minimumFractionDigits: 2 })}</span>
           <span className="text-neutral-500 line-through text-base">

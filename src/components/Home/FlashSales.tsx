@@ -52,7 +52,7 @@ export default function FlashSales() {
                 </div>
             </div>
 
-            <div>
+            <div className="text-sm">
               <p className="line-clamp-1">{product.title}</p>
               <span>₦ {(product.price * 100).toLocaleString("en-NG", { minimumFractionDigits: 2 })}</span>
             </div>

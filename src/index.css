@@ -5,7 +5,7 @@
   --default-font-family: 'Inter', sans-serif;
   --color-primary: #820933;
 
-  --animate-flow: flow 20s infinite linear;
+  --animate-flow: flow 25s infinite linear;
   @keyframes flow {
     from {translate: 0;}
     to {translate: -100%}
